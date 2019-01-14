@@ -1,11 +1,9 @@
 const { json, send } = require('micro')
 const { parse } = require('url')
 const logger = require('./lib/log')
+const slacksend = require('./lib/slack-send')
 const validateReq = require('./lib/validate-req')
 const runScript = require('./lib/run-script')
-const request = require('request')
-const { slackwebhook } = require('./config')
-
 
 
 module.exports = async (req, res) => {
@@ -39,16 +37,7 @@ module.exports = async (req, res) => {
   try {
     const result = await runScript(hook, payload) // runs script
     logger('debug', `${result}\nFinished running hook "${hook}" for repository "${payload.repository.repo_name}"`)
-    request.post(
-      slackwebhook,
-      { json: payload },
-      function (error, response, body) {
-          if (!error && response.statusCode == 200) {
-              console.log(body)
-          }
-      }
-  )
-  logger('debug', `${result}\nFinished running hook "${hook}" for repository "${payload.repository.repo_name}"`)
+    slacksend(payload)
   } catch (e) {
     logger('err', e)
   }
