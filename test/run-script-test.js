@@ -25,7 +25,7 @@ test('run-script payload_to_env.sh', async t => {
       tag: 'v1.0.0-rc1'
     },
     repository: {
-      repo_name: 'micro-dockerhub-hook'
+      repo_name: 'harbourmaster'
     }
   }
   const res = await runScript('payload_to_env.sh', payload)

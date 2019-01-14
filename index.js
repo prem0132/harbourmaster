@@ -3,6 +3,10 @@ const { parse } = require('url')
 const logger = require('./lib/log')
 const validateReq = require('./lib/validate-req')
 const runScript = require('./lib/run-script')
+const request = require('request')
+const { slackwebhook } = require('./config')
+
+
 
 module.exports = async (req, res) => {
   const hooks = require('./scripts')
@@ -27,13 +31,24 @@ module.exports = async (req, res) => {
     return send(res, 400, e.message)
   }
   // everything is on it's right place...
-  send(res, 204) // sends 'no content' to client
+  //send(res, 204) // sends 'no content' to client
+  
   logger('debug', `Payload from docker hub:\n ${JSON.stringify(payload, null, 2)} \nRunning hook on repo: ${payload.repository.repo_name}`)
   const hook = hooks[`${payload.repository.repo_name}:${payload.push_data.tag}`] || hooks[payload.repository.repo_name] // looks for tag first
 
   try {
     const result = await runScript(hook, payload) // runs script
     logger('debug', `${result}\nFinished running hook "${hook}" for repository "${payload.repository.repo_name}"`)
+    request.post(
+      slackwebhook,
+      { json: payload },
+      function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+              console.log(body)
+          }
+      }
+  )
+  logger('debug', `${result}\nFinished running hook "${hook}" for repository "${payload.repository.repo_name}"`)
   } catch (e) {
     logger('err', e)
   }

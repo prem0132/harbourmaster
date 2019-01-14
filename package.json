@@ -1,5 +1,5 @@
 {
-  "name": "micro-dockerhub-hook",
+  "name": "harbourmaster",
   "version": "1.2.0",
   "description": "docker hub webhook",
   "main": "index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maccyber/micro-dockerhub-hook.git"
+    "url": "git+https://github.com/prem0132/harbourmaster.git"
   },
   "keywords": [
     "dockerhub",
@@ -20,15 +20,15 @@
     "automatedbuilds"
   ],
   "author": {
-    "name": "Jonas Enge",
-    "email": "jonas.enge@gmail.com",
-    "url": "https://github.com/maccyber"
+    "name": "Prem Dubey",
+    "email": "prem.it.rits@gmail.com",
+    "url": "https://github.com/prem0132"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maccyber/micro-dockerhub-hook/issues"
+    "url": "https://github.com/prem0132/harbourmaster/issues"
   },
-  "homepage": "https://github.com/maccyber/micro-dockerhub-hook#readme",
+  "homepage": "https://github.com/prem0132/harbourmaster#readme",
   "devDependencies": {
     "ava": "0.25.0",
     "axios": "0.18.0",
