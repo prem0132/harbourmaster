@@ -7,14 +7,21 @@ pipeline {
   }
   stages{
       stage('docker build'){
+        steps{ 
           sh 'docker build -t premhashmap/harbourmaster:latest .'
+        }
       }
       stage('docker push'){
+        when{
+          branch 'master'
+        }
+        steps{ 
           withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhubPWD', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
               sh 'sudo docker login -u $USERNAME -p $PASSWORD'
           }
           sh 'sudo docker push premhashmap/harbourmaster:latest'
        }   
+      }
     }
   post {
     always {
