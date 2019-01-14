@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: harbourmaster
+  namespace: harbourmaster
+  labels:
+    name: harbourmaster
+spec:
+  type: "LoadBalancer"
+  ports:
+  - name: "http"
+    port: 3000
+    targetPort: 3000
+  selector:
+    name: harbourmaster
+status:
+  loadBalancer: {}

@@ -16,6 +16,9 @@ MAINTAINER Jonas Enge
 RUN apk add --update --no-cache docker py-pip
 RUN apk add bash bash-doc bash-completion
 RUN pip install docker-compose
+RUN apk --no-cache add curl
+ADD https://storage.googleapis.com/kubernetes-release/release/v1.6.4/bin/linux/amd64/kubectl /usr/bin/kubectl
+RUN chmod +x /usr/bin/kubectl
 
 # Extra tools for native dependencies
 # RUN apk add --no-cache make gcc g++ python

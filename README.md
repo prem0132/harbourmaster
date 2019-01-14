@@ -1,13 +1,13 @@
-[![Build Status](https://travis-ci.org/maccyber/micro-dockerhub-hook.svg?branch=master)](https://travis-ci.org/maccyber/micro-dockerhub-hook)
+[![Build Status](https://travis-ci.org/prem0132/harbourmaster.svg?branch=master)](https://travis-ci.org/prem0132/harbourmaster)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-[![Coverage Status](https://coveralls.io/repos/github/maccyber/micro-dockerhub-hook/badge.svg)](https://coveralls.io/github/maccyber/micro-dockerhub-hook)
-[![Code Climate](https://codeclimate.com/github/maccyber/micro-dockerhub-hook/badges/gpa.svg)](https://codeclimate.com/github/maccyber/micro-dockerhub-hook)
+[![Coverage Status](https://coveralls.io/repos/github/prem0132/harbourmaster/badge.svg)](https://coveralls.io/github/prem0132/harbourmaster)
+[![Code Climate](https://codeclimate.com/github/prem0132/harbourmaster/badges/gpa.svg)](https://codeclimate.com/github/prem0132/harbourmaster)
 
-# micro-dockerhub-hook
+# harbourmaster
 
 Automatic [docker](https://www.docker.com) deployment with [webhooks](https://docs.docker.com/docker-hub/webhooks/).
 
-micro-dockerhub-hook listens to incoming HTTP POST-requests from hub.docker.com and triggers your specified script(s).
+harbourmaster listens to incoming HTTP POST-requests from hub.docker.com and triggers your specified script(s).
 
 ## Features
 
@@ -36,8 +36,8 @@ echo $TOKEN
 Nodejs and npm must be installed.
 
 ```sh
-git clone http://github.com/maccyber/micro-dockerhub-hook
-cd micro-dockerhub-hook
+git clone http://github.com/prem0132/harbourmaster
+cd harbourmaster
 npm i
 ```
 
@@ -64,7 +64,7 @@ tag and parameters are optional.
 
 Remember to `chmod +x script.sh`
 
-### Start micro-dockerhub-hook
+### Start harbourmaster
 ```sh
 npm start
 ```
@@ -73,7 +73,7 @@ npm start
 
 Git clone
 ```sh
-git clone http://github.com/maccyber/micro-dockerhub-hook
+git clone http://github.com/prem0132/harbourmaster
 ```
 
 Add secret token in docker.env with
@@ -90,7 +90,7 @@ docker-compose up -d
 
 Git clone
 ```sh
-git clone http://github.com/maccyber/micro-dockerhub-hook
+git clone http://github.com/prem0132/harbourmaster
 ```
 
 Start with
@@ -100,8 +100,8 @@ docker run -d \
   -e TOKEN=${token} \
   -v ${PWD}/scripts:/src/scripts \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  --name micro-dockerhub-hook \
-  maccyber/micro-dockerhub-hook
+  --name harbourmaster \
+  prem0132/harbourmaster
 ```
 
 # Configuration on docker hub
@@ -123,8 +123,8 @@ docker-hook listens to port 3000 by default.
 Setup the development environment
 
 ```sh
-git clone https://github.com/maccyber/micro-dockerhub-hook/
-cd micro-dockerhub-hook
+git clone https://github.com/prem0132/harbourmaster/
+cd harbourmaster
 npm i
 npm run dev
 ```

@@ -1,0 +1,36 @@
+apiVersion: apps/v1beta1
+metadata:
+  labels:
+    name: harbourmaster
+  name: harbourmaster
+  namespace: harbourmaster
+spec:
+  template:
+    metadata:
+      labels:
+        name: harbourmaster
+    spec:
+      containers:
+      - name: harbourmaster
+        image: premhashmap/harbourmaster:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: SERVER_PORT
+          value: 3000
+        - name: TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: token
+              name: harbourmaster-token         
+        - name: ROUTE
+          value: "/api"
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+
