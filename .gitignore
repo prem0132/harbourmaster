@@ -1,5 +1,7 @@
 # IDE
 secret.yaml
+test/data/pushdata.json
+testlog
 .idea
 .vscode
 
