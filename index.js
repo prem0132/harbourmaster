@@ -40,7 +40,7 @@ module.exports = async (req, res) => {
     const result = await runScript(hook, payload) // runs script
     logger('debug', `${result}\nFinished running hook "${hook}" for repository "${payload.repository.repo_name}"`)
     if (slackenabled) {
-       dockerslack(payload) }
+       dockerslack(`Payload from docker hub:\n ${JSON.stringify(payload, null, 2)} \nRan hook on repo: ${payload.repository.repo_name}`) }
     } 
     
     catch (e) {
