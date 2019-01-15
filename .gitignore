@@ -4,6 +4,7 @@ test/data/pushdata.json
 testlog
 .idea
 .vscode
+.env
 
 # Mac OS
 .DS_Store

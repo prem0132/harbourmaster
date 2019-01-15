@@ -1,0 +1,29 @@
+{"channel": "#tempus_notifications",
+    "username": "qa-monitoring-bot",
+    "icon_emoji": ":bat:",
+    "text": {
+                "push_data": 
+                    {
+                        "pushed_at":1547468230,
+                        "images":[],
+                        "tag":"latest",
+                        "pusher":"premhashmap"},
+                        "repository":
+                            {
+                                "status":"Active",
+                                "description":"",
+                                "is_trusted":false,
+                                "full_description":null,
+                                "repo_url":"https://hub.docker.com/r/premhashmap/harbourmaster",
+                                "owner":"premhashmap",
+                                "is_official":false,
+                                "is_private":false,
+                                "name":"harbourmaster",
+                                "namespace":"premhashmap",
+                                "star_count":0,
+                                "comment_count":0,
+                                "date_created":1547467472,
+                                "repo_name":"premhashmap/harbourmaster"
+                            }
+                    }
+            }
