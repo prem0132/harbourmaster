@@ -4,6 +4,7 @@ const logger = require('./lib/log')
 const slacksend = require('./lib/slack-send')
 const validateReq = require('./lib/validate-req')
 const runScript = require('./lib/run-script')
+const dockerslack = require('./lib/docker-slack')
 const { slackenabled } = require('./config')
 
 
@@ -39,8 +40,9 @@ module.exports = async (req, res) => {
     const result = await runScript(hook, payload) // runs script
     logger('debug', `${result}\nFinished running hook "${hook}" for repository "${payload.repository.repo_name}"`)
     if (slackenabled) {
-       slacksend(payload) }
+       dockerslack(payload) }
     } 
+    
     catch (e) {
     logger('err', e)
   }
